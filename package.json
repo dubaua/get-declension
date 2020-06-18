@@ -1,0 +1,27 @@
+{
+  "name": "get-declension",
+  "version": "0.0.1",
+  "description": "function to get a declension from single, few and many strings",
+  "source": "get-declension.js",
+  "main": "dist/get-declension.min.js",
+  "umd:main": "dist/get-declension.umd.js",
+  "module": "dist/get-declension.mjs",
+  "repository": "git@github.com:dubaua/get-declension.git",
+  "author": "Vladimir Lysov",
+  "email": "dubaua@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "eslint": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "microbundle": "^0.12.1",
+    "mocha": "^8.0.1"
+  },
+  "scripts": {
+    "test": "mocha get-declension.spec.js",
+    "build": "microbundle --name getDeclension --strict"
+  }
+}
