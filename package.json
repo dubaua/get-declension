@@ -1,6 +1,6 @@
 {
   "name": "@dubaua/get-declension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "function to get a declension from one, few and many strings",
   "source": "get-declension.js",
   "main": "dist/get-declension.min.js",
