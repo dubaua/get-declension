@@ -23,7 +23,7 @@ yarn add @dubaua/get-declension
 или если вы хотите использовать как глобальную функцию
 
 ```html
-<script src="https://unpkg.com/@dubaua/get-declension@1.0.0/dist/get-declension.min.umd.js"></script>
+<script src="https://unpkg.com/@dubaua/get-declension@1.0.1/dist/get-declension.min.umd.js"></script>
 ```
 
 # Использование
