@@ -1,5 +1,5 @@
-const assert = require('assert');
-const getDeclension = require('./get-declension.js');
+import assert from 'assert';
+import getDeclension from './get-declension.js';
 
 describe('getDeclension', () => {
   describe('testing edge cases', () => {
@@ -404,42 +404,42 @@ describe('getDeclension', () => {
       function errorCase() {
         getDeclension({ count: false, one: 'яблоко', few: 'яблока', many: 'яблок' });
       }
-      assert.throws(errorCase, /Expected count is a finite number, got .*$/);
+      assert.throws(errorCase, /Expected count to be a finite number, got/);
     });
 
     it(`throws an error if count is infinity`, () => {
       function errorCase() {
         getDeclension({ count: -Infinity, one: 'яблоко', few: 'яблока', many: 'яблок' });
       }
-      assert.throws(errorCase, /Expected count is a finite number, got .*$/);
+      assert.throws(errorCase, /Expected count to be a finite number, got/);
     });
 
     it(`throws an error if count is NaN`, () => {
       function errorCase() {
         getDeclension({ count: NaN, one: 'яблоко', few: 'яблока', many: 'яблок' });
       }
-      assert.throws(errorCase, /Expected count is a finite number, got .*$/);
+      assert.throws(errorCase, /Expected count to be a finite number, got/);
     });
 
     it(`throws an error if one isn't a string`, () => {
       function errorCase() {
         getDeclension({ count: 5, one: (s) => s, few: 'яблока', many: 'яблок' });
       }
-      assert.throws(errorCase, /Expected one is a string, got .*$/);
+      assert.throws(errorCase, /Expected one to be a string, got/);
     });
 
     it(`throws an error if few isn't a string`, () => {
       function errorCase() {
         getDeclension({ count: 5, one: 'яблоко', few: Math.PI, many: 'яблок' });
       }
-      assert.throws(errorCase, /Expected few is a string, got .*$/);
+      assert.throws(errorCase, /Expected few to be a string, got/);
     });
 
     it(`throws an error if many isn't a string`, () => {
       function errorCase() {
         getDeclension({ count: 5, one: 'яблоко', few: 'яблока', many: { string: 'червяк' } });
       }
-      assert.throws(errorCase, /Expected many is a string, got .*$/);
+      assert.throws(errorCase, /Expected many to be a string, got/);
     });
   });
 });

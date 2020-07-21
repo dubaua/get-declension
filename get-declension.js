@@ -1,3 +1,29 @@
+// TODO this doesn't work without /node_modules/ possible microbundle or rollup bug
+import mergeOptions from '/node_modules/@dubaua/merge-options';
+
+const OPTION_CONFIG = {
+  count: {
+    required: true,
+    validator: (x) => typeof x === 'number' && isFinite(x),
+    description: 'a finite number',
+  },
+  one: {
+    required: true,
+    validator: (x) => typeof x === 'string',
+    description: 'a string',
+  },
+  few: {
+    required: true,
+    validator: (x) => typeof x === 'string',
+    description: 'a string',
+  },
+  many: {
+    required: true,
+    validator: (x) => typeof x === 'string',
+    description: 'a string',
+  },
+};
+
 /**
  * Merges given count and on of declensions: one, few or many into a string
  * Соединяет переданное число и одно из трех склонений числительных в строку
@@ -12,19 +38,14 @@
  * @return {string} строка из числа и нужного склонения
  */
 
-function getDeclension({ count, one, few, many }) {
-  if (typeof count !== 'number' || !isFinite(count)) {
-    throw new TypeError(`Expected count is a finite number, got ${typeof count} ${count}`);
-  }
-  if (typeof one !== 'string') {
-    throw new TypeError(`Expected one is a string, got ${typeof one} ${one}`);
-  }
-  if (typeof few !== 'string') {
-    throw new TypeError(`Expected few is a string, got ${typeof few} ${few}`);
-  }
-  if (typeof many !== 'string') {
-    throw new TypeError(`Expected many is a string, got ${typeof many} ${many}`);
-  }
+function getDeclension(config) {
+  const validConfig = mergeOptions({
+    optionConfig: OPTION_CONFIG,
+    userOptions: config,
+    preffix: '[getDeclension]:',
+    suffix: '\nCheck out documentation https://github.com/dubaua/get-declension',
+  });
+  const { count, one, few, many } = validConfig;
 
   const isFactional = Math.round(count) !== count;
   let declension = many;
@@ -42,4 +63,4 @@ function getDeclension({ count, one, few, many }) {
   return `${count} ${declension}`;
 }
 
-module.exports = getDeclension;
+export default getDeclension;
